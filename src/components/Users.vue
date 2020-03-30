@@ -1,6 +1,10 @@
 <template>
-  <div class= "each-user">
-    <p> {{ user.userName }} </p>
+  <div class= "each-user" @click= "$emit('show-userdata', user.userId)">
+    <p>
+      {{ user.userName }}
+      <button @click= "$emit('del-user', user.userId)" class= "del"> x </button>
+    </p>
+    <p id= "additionalData" @click= "$emit('show-more')"> </p>
 
   </div>
 
@@ -12,6 +16,12 @@
     name: "Users",
     props: ["user"]
   }
+
+/*  methods: {
+    showAdditionalData() {
+      document.getElementbyId("additionalData").innerHTML($emit= 'show-more');
+    }
+  }*/
 </script>
 
 <style scoped>
@@ -24,6 +34,11 @@
 
   .each-user:hover {
     background: #98FB98;
+  }
+  .del {
+    background: #CD5C5C;
+    border-radius: 8px;
+    padding: 4px;
   }
 
 </style>

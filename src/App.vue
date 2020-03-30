@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <UserList v-bind:users= "users"/>
+    <UserList v-bind:users= "users" v-on:del-user= "delUser" v-on:show-userdata="showUserData"/>
     <AddUser v-on:add-user= "addUser"/>
   </div>
 </template>
@@ -31,6 +31,19 @@ export default {
   methods: {
     addUser(newUser) {
       this.users= [...this.users, newUser];
+    },
+
+    delUser(userId) {
+      this.users= this.users.filter(user => user.userId !== userId);
+    },
+
+    showUserData(userId) {
+      this.userId = userId;
+
+
+
+      window.alert("Fees Paid: " + (this.feesPaid));
+
     }
   }
 }

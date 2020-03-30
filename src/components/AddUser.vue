@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   name: "AddUser",
+
   data() {
     return {
       userName: ""
@@ -24,11 +25,12 @@ export default {
     addUser(e) {
       e.preventDefault();
       const newUser= {
-        id: uuid.v4(),
+        id: uuidv4(),
         userName: this.userName,
-        feesPaid: false
-      }
+        feesPaid: false,
 
+      }
+      this.userName = "";
       this.$emit('add-user', newUser);
     }
   }
