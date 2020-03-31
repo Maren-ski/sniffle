@@ -1,10 +1,10 @@
 <template>
-  <div class= "each-user" @click= "$emit('show-userdata', user.userId)">
-    <p>
+  <div class= "each-user">
+    <p @click= "onClick">
       {{ user.userName }}
       <button @click= "$emit('del-user', user.userId)" class= "del"> x </button>
     </p>
-    <p id= "additionalData" @click= "$emit('show-more')"> </p>
+    <span class= "show-more" v-show= "isClicked"> Fees Paid: {{ user.feesPaid }} </span>
 
   </div>
 
@@ -14,14 +14,25 @@
 
   export default {
     name: "Users",
-    props: ["user"]
+    props: ["user"],
+
+    data() {
+      return {
+        isClicked: false
+      }
+    },
+
+
+
+    methods: {
+      onClick() {
+        return {
+          isClicked: true
+        }
+      }
+    }
   }
 
-/*  methods: {
-    showAdditionalData() {
-      document.getElementbyId("additionalData").innerHTML($emit= 'show-more');
-    }
-  }*/
 </script>
 
 <style scoped>
@@ -39,6 +50,12 @@
     background: #CD5C5C;
     border-radius: 8px;
     padding: 4px;
+  }
+  .show-more {
+    border-bottom: 1px #ccc dotted;
+    border-top: 1px #ccc dotted;
+    padding: 8px;
+    background: #ccc;
   }
 
 </style>
