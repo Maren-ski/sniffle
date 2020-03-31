@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <UserList v-bind:users= "users" v-on:del-user= "delUser" v-on:show-userdata="showUserData"/>
+    <UserList v-bind:users= "users" v-on:del-user= "delUser" v-on:on-click="showUserData"/>
     <AddUser v-on:add-user= "addUser"/>
   </div>
 </template>
@@ -38,12 +38,9 @@ export default {
     },
 
     showUserData(userId) {
-      this.userId = userId;
-
-
-
-      window.alert("Fees Paid: " + (this.feesPaid));
-
+      return {
+        isClicked: true
+      }
     }
   }
 }
