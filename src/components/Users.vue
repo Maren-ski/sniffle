@@ -18,16 +18,14 @@
 
     data() {
       return {
-        isClicked: false
+        isClicked: this.isClicked = false
       }
     },
-
-
 
     methods: {
       onClick() {
         return {
-          isClicked: true
+          isClicked: this.isClicked = !this.isClicked
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <UserList v-bind:users= "users" v-on:del-user= "delUser" v-on:on-click="showUserData"/>
+    <UserList v-bind:users= "users" v-on:del-user= "delUser"/>
     <AddUser v-on:add-user= "addUser"/>
   </div>
 </template>
@@ -35,12 +35,6 @@ export default {
 
     delUser(userId) {
       this.users= this.users.filter(user => user.userId !== userId);
-    },
-
-    showUserData(userId) {
-      return {
-        isClicked: true
-      }
     }
   }
 }
